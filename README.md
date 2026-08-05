@@ -45,6 +45,14 @@ Or from a shell:
 python -m earth4all gl --plot giant-leap.png --csv giant-leap.csv
 ```
 
+`examples/two-scenarios.ipynb` walks through both scenarios, builds a third one,
+and compares the run with Vensim:
+
+```sh
+pip install -e ".[notebook]"
+jupyter lab examples/two-scenarios.ipynb
+```
+
 ### Changing the model
 
 `run_e4a` takes the parameters and the initial values of every sector, so a
