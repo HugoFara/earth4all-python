@@ -29,12 +29,12 @@ def _variables_pub():
 
 def fig_pub(**kwargs):
     """Plot the main variables of the Public sector run."""
+    kwargs.setdefault("showaxis", False)
+    kwargs.setdefault("showlegend", True)
     return plotvariables(
         pub_run_solution(),
         (1980, 2100),
         _variables_pub(),
         title="Public sector plots",
-        showaxis=False,
-        showlegend=True,
         **kwargs,
     )

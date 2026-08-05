@@ -30,12 +30,12 @@ def _variables_cli():
 
 def fig_cli(**kwargs):
     """Plot the main variables of the Climate sector run."""
+    kwargs.setdefault("showaxis", True)
+    kwargs.setdefault("showlegend", True)
     return plotvariables(
         cli_run_solution(),
         (1980, 2100),
         _variables_cli(),
         title="Climate sector plots",
-        showaxis=True,
-        showlegend=True,
         **kwargs,
     )

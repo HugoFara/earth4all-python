@@ -29,12 +29,12 @@ def _variables_out():
 
 def fig_out(**kwargs):
     """Plot the main variables of the Output sector run."""
+    kwargs.setdefault("showaxis", False)
+    kwargs.setdefault("showlegend", True)
     return plotvariables(
         out_run_solution(),
         (1980, 2100),
         _variables_out(),
         title="Output sector plots",
-        showaxis=False,
-        showlegend=True,
         **kwargs,
     )

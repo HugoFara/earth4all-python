@@ -29,26 +29,26 @@ def _variables():
 
 def fig_baserun_tltl(**kwargs):
     """Plot the base run of the *Too Little Too Late* scenario."""
+    kwargs.setdefault("showaxis", True)
+    kwargs.setdefault("showlegend", True)
     return plotvariables(
         run_tltl_solution(),
         (1980, 2100),
         _variables(),
         title="Too Little too Late model base run plot",
-        showaxis=True,
-        showlegend=True,
         **kwargs,
     )
 
 
 def fig_baserun_gl(**kwargs):
     """Plot the base run of the *Giant Leap* scenario."""
+    kwargs.setdefault("showaxis", True)
+    kwargs.setdefault("showlegend", True)
     return plotvariables(
         run_gl_solution(),
         (1980, 2100),
         _variables(),
         title="Giant Leap model base run plot",
-        showaxis=True,
-        showlegend=True,
         **kwargs,
     )
 

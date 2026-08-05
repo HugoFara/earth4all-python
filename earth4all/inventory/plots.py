@@ -23,18 +23,20 @@ def _variables_inv():
         (inv.PRI, 0, 1.5, "PRI"),
         (inv.DELDI, 0.9, 1.1, "DELDI"),
         (inv.IR, -0.1, 0.1, "IR"),
-        (inv.PI, 0, 4, "PI"),
+        # The Julia list ends on `inv.PI`, which the Inventory sector does not
+        # declare. `PI` belongs to Finance, which a run of this sector alone
+        # does not include, so the figure is left with the four above.
     ]
 
 
 def fig_inv(**kwargs):
     """Plot the main variables of the Inventory sector run."""
+    kwargs.setdefault("showaxis", True)
+    kwargs.setdefault("showlegend", True)
     return plotvariables(
         inv_run_solution(),
         (1980, 2040),
         _variables_inv(),
         title="Inventory sector plots",
-        showaxis=True,
-        showlegend=True,
         **kwargs,
     )

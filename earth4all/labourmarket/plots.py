@@ -21,18 +21,20 @@ def _variables_lab():
     return [
         (lab.WF, 0, 6000, "Workforce"),
         (lab.WSO, 0, 1, "Worker share of output"),
-        (lab.UNRA, 0, 0.1, "Unemployment rate"),
+        # The Julia list names `UNRA` here; the unemployment rate of the sector
+        # is `UR`.
+        (lab.UR, 0, 0.1, "Unemployment rate"),
     ]
 
 
 def fig_lab(**kwargs):
     """Plot the main variables of the LabourMarket sector run."""
+    kwargs.setdefault("showaxis", False)
+    kwargs.setdefault("showlegend", True)
     return plotvariables(
         lab_run_solution(),
         (1980, 2100),
         _variables_lab(),
         title="Labour Market sector plots",
-        showaxis=False,
-        showlegend=True,
         **kwargs,
     )

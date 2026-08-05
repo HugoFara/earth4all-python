@@ -30,12 +30,12 @@ def _variables_fin():
 
 def fig_fin(**kwargs):
     """Plot the main variables of the Finance sector run."""
+    kwargs.setdefault("showaxis", True)
+    kwargs.setdefault("showlegend", True)
     return plotvariables(
         fin_run_solution(),
         (2010, 2030),
         _variables_fin(),
         title="Finance sector plots",
-        showaxis=True,
-        showlegend=True,
         **kwargs,
     )

@@ -25,12 +25,12 @@ def _variables_en():
 
 def fig_en(**kwargs):
     """Plot the main variables of the Energy sector run."""
+    kwargs.setdefault("showaxis", True)
+    kwargs.setdefault("showlegend", True)
     return plotvariables(
         ene_run_solution(),
         (1980, 2100),
         _variables_en(),
         title="Energy sector plots",
-        showaxis=True,
-        showlegend=True,
         **kwargs,
     )

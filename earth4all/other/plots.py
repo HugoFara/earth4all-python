@@ -27,12 +27,12 @@ def _variables_oth():
 
 def fig_oth(**kwargs):
     """Plot the main variables of the Other sector run."""
+    kwargs.setdefault("showaxis", False)
+    kwargs.setdefault("showlegend", True)
     return plotvariables(
         oth_run_solution(),
         (1980, 2100),
         _variables_oth(),
         title="Other sector plots",
-        showaxis=False,
-        showlegend=True,
         **kwargs,
     )

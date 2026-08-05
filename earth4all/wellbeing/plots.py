@@ -25,12 +25,12 @@ def _variables_wb():
 
 def fig_wb(**kwargs):
     """Plot the main variables of the Wellbeing sector run."""
+    kwargs.setdefault("showaxis", False)
+    kwargs.setdefault("showlegend", True)
     return plotvariables(
         wel_run_solution(),
         (1980, 2100),
         _variables_wb(),
         title="Wellbeing sector plots",
-        showaxis=False,
-        showlegend=True,
         **kwargs,
     )

@@ -22,12 +22,17 @@ _GRID = {"color": "#9aa0a6", "linewidth": 0.6, "alpha": 0.45}
 _MINOR_GRID = {"color": "#9aa0a6", "linewidth": 0.4, "alpha": 0.2}
 
 
+def _year_axis(axes):
+    """Tick the horizontal axis on whole years, with one minor tick between."""
+    from matplotlib.ticker import AutoMinorLocator, MaxNLocator
+
+    axes.xaxis.set_major_locator(MaxNLocator(nbins="auto", integer=True))
+    axes.xaxis.set_minor_locator(AutoMinorLocator(2))
+
+
 def _draw_grid(axes, vertical=True, horizontal=True):
     """Put a grid behind the lines, with lighter lines between the labelled ones."""
-    from matplotlib.ticker import AutoMinorLocator
-
     axes.set_axisbelow(True)
-    axes.xaxis.set_minor_locator(AutoMinorLocator(2))
     if vertical:
         axes.grid(axis="x", which="major", **_GRID)
         axes.grid(axis="x", which="minor", **_MINOR_GRID)
@@ -61,8 +66,11 @@ def plotvariables(
     times = solution.t
     window = (times >= start) & (times <= stop)
 
-    lines = []
+    labelled = []
     for index, (variable, ymin, ymax, label) in enumerate(variables):
+        # A variable given no label of its own goes by the name it carries in
+        # Vensim, rather than by nothing at all.
+        label = label or getattr(variable, "description", "")
         colour = _COLOURS[index % len(_COLOURS)]
         target = axes if index == 0 else axes.twinx()
         if index > 1:
@@ -70,7 +78,8 @@ def plotvariables(
         line, = target.plot(
             times[window], solution[variable][window], color=colour, label=label or None,
         )
-        lines.append(line)
+        if label:
+            labelled.append((line, label))
         target.set_ylim(ymin, ymax)
         target.yaxis.set_major_locator(LinearLocator(_TICKS))
         if showaxis:
@@ -82,14 +91,15 @@ def plotvariables(
 
     axes.set_xlim(start, stop)
     axes.set_xlabel("Year")
+    _year_axis(axes)
     if showgrid:
         # Without the labels of the vertical axes, a horizontal line reads
         # against nothing, so only the years get a grid.
         _draw_grid(axes, horizontal=showaxis)
     if title:
         axes.set_title(title)
-    if showlegend and any(line.get_label() for line in lines):
-        axes.legend(lines, [line.get_label() for line in lines], loc="upper left")
+    if showlegend and labelled:
+        axes.legend(*zip(*labelled), loc="upper left")
     figure.tight_layout()
     return figure
 
@@ -122,6 +132,7 @@ def plot_two_solutions(
             )
         panel.set_ylabel(label)
         panel.set_xlim(start, stop)
+        _year_axis(panel)
         if showgrid:
             _draw_grid(panel)
     axes[0, 0].legend(loc="upper left")

@@ -37,9 +37,13 @@ million in 2045, and ends at 5984. Wellbeing is where the two part company
 hardest: it drifts sideways in one and more than quadruples in the other, while
 warming ends at 2.35 °C against 2.01 °C.
 
-`python scripts/render_figures.py` draws these three again, after a change to the
-model or to the plots. `examples/two-scenarios.ipynb` goes through them
-interactively.
+Each of the twelve sectors has a figure of its own as well: **[the gallery](figures/)**
+shows all of them, next to what each one is about.
+
+`python scripts/render_figures.py` draws every figure again, after a change to
+the model or to the plots, and rewrites the gallery page. Two notebooks go
+through the same ground interactively: `examples/two-scenarios.ipynb` for the
+scenarios, `examples/sector-gallery.ipynb` for the sectors.
 
 ## Running the model
 
@@ -174,8 +178,12 @@ range each series covers.
 
 - The equations, parameters, initial values and scenarios are the same; the
   agreement above was checked equation by equation as well as numerically.
-- `public_run` connects `GPU`, the variable the Public sector reads from Demand.
-  The Julia code names `GP` there, which no system declares.
+- Three places in the Julia code name a variable that does not exist, and error
+  when they are reached. `public_run` connects `GPU`, the variable the Public
+  sector reads from Demand, where the Julia code names `GP`. The labour market
+  figure draws `UR`, the unemployment rate, where it names `UNRA`. The inventory
+  figure names `PI`, which belongs to Finance and so is not in a run of the
+  Inventory sector alone; that figure is left with its four other variables.
 - Running a single sector uses the tabulated trajectories of `src/tables.jl` by
   default. In the Julia package that file is not loaded by any module, so the
   `_full_support` systems have no tables to read.

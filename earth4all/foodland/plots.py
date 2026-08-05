@@ -30,12 +30,12 @@ def _variables_foo():
 
 def fig_fl(**kwargs):
     """Plot the main variables of the FoodLand sector run."""
+    kwargs.setdefault("showaxis", True)
+    kwargs.setdefault("showlegend", True)
     return plotvariables(
         foo_run_solution(),
         (1980, 2100),
         _variables_foo(),
         title="Food and land sector plots",
-        showaxis=True,
-        showlegend=True,
         **kwargs,
     )

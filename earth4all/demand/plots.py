@@ -30,12 +30,12 @@ def _variables_dem():
 
 def fig_dem(**kwargs):
     """Plot the main variables of the Demand sector run."""
+    kwargs.setdefault("showaxis", True)
+    kwargs.setdefault("showlegend", True)
     return plotvariables(
         dem_run_solution(),
         (1980, 2100),
         _variables_dem(),
         title="Demand sector plots",
-        showaxis=True,
-        showlegend=True,
         **kwargs,
     )
