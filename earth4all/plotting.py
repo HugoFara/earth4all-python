@@ -17,6 +17,22 @@ _COLOURS = [
 ]
 
 _AXIS_OFFSET = 55  # points between two stacked vertical axes
+_TICKS = 6  # ticks per vertical axis; the same count on all of them lines them up
+_GRID = {"color": "#9aa0a6", "linewidth": 0.6, "alpha": 0.45}
+_MINOR_GRID = {"color": "#9aa0a6", "linewidth": 0.4, "alpha": 0.2}
+
+
+def _draw_grid(axes, vertical=True, horizontal=True):
+    """Put a grid behind the lines, with lighter lines between the labelled ones."""
+    from matplotlib.ticker import AutoMinorLocator
+
+    axes.set_axisbelow(True)
+    axes.xaxis.set_minor_locator(AutoMinorLocator(2))
+    if vertical:
+        axes.grid(axis="x", which="major", **_GRID)
+        axes.grid(axis="x", which="minor", **_MINOR_GRID)
+    if horizontal:
+        axes.grid(axis="y", which="major", **_GRID)
 
 
 def plotvariables(
@@ -26,14 +42,19 @@ def plotvariables(
     title="",
     showaxis=True,
     showlegend=True,
+    showgrid=True,
     figsize=(11, 6),
 ):
     """Draw `variables` of `solution` over `xrange` on a single figure.
 
     Each entry of `variables` is a `(variable, ymin, ymax, label)` tuple, as in
     the Julia code: the bounds set the scale of that variable's own axis.
+
+    Every vertical axis is given the same number of ticks, so they fall at the
+    same heights and one horizontal gridline can be read against all of them.
     """
     import matplotlib.pyplot as plt
+    from matplotlib.ticker import LinearLocator
 
     figure, axes = plt.subplots(figsize=figsize)
     start, stop = xrange[-2], xrange[-1]
@@ -51,14 +72,20 @@ def plotvariables(
         )
         lines.append(line)
         target.set_ylim(ymin, ymax)
+        target.yaxis.set_major_locator(LinearLocator(_TICKS))
         if showaxis:
             target.tick_params(axis="y", colors=colour)
             target.spines["right" if index else "left"].set_color(colour)
         else:
-            target.set_yticks([])
+            target.tick_params(axis="y", left=False, right=False, labelleft=False,
+                               labelright=False)
 
     axes.set_xlim(start, stop)
     axes.set_xlabel("Year")
+    if showgrid:
+        # Without the labels of the vertical axes, a horizontal line reads
+        # against nothing, so only the years get a grid.
+        _draw_grid(axes, horizontal=showaxis)
     if title:
         axes.set_title(title)
     if showlegend and any(line.get_label() for line in lines):
@@ -68,9 +95,14 @@ def plotvariables(
 
 
 def plot_two_solutions(
-    name1, solution1, name2, solution2, variables, xrange=(1980, 2100), figsize=(11, 6),
+    name1, solution1, name2, solution2, variables, xrange=(1980, 2100),
+    showgrid=True, figsize=(11, 6),
 ):
-    """Compare the same variables in two solutions, one panel per variable."""
+    """Compare the same variables in two solutions, one panel per variable.
+
+    Each panel has a vertical axis of its own, so its grid can be read straight
+    off: where a curve turns over, and at what value.
+    """
     import matplotlib.pyplot as plt
 
     figure, axes = plt.subplots(
@@ -90,6 +122,8 @@ def plot_two_solutions(
             )
         panel.set_ylabel(label)
         panel.set_xlim(start, stop)
+        if showgrid:
+            _draw_grid(panel)
     axes[0, 0].legend(loc="upper left")
     axes[-1, 0].set_xlabel("Year")
     figure.tight_layout()
