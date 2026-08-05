@@ -19,9 +19,9 @@ def oth_run_solution():
 def _variables_oth():
     oth = other()
     return [
-        (oth.CTA, 0, 20000, "CTA"),
-        (oth.PB15, 0, 10000, "PB15"),
-        (oth.RGGDPP, 0, 0.04, "RGGDPP"),
+        (oth.CTA, 0, 20000, "Cost of the turnarounds (G$/y)"),
+        (oth.PB15, 0, 10000, "Population below 15 k$/p/y (Mp)"),
+        (oth.RGGDPP, 0, 0.04, "Growth rate of GDP per person (1/y)"),
     ]
 
 

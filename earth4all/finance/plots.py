@@ -19,12 +19,12 @@ def fin_run_solution():
 def _variables_fin():
     fin = finance()
     return [
-        (fin.UR, 0, 0.1, "Unemployment rate"),
-        (fin.CBC, 0, 0.1, "Corporate borrowing cost"),
-        (fin.CBSR, 0, 0.1, "Central bank signal rate"),
-        (fin.GBC, 0, 0.1, "Government borrowing cost"),
-        (fin.WBC, 0, 0.1, "Worker borrowing cost"),
-        (fin.IR, -0.05, 0.05, "Inflation rate"),
+        (fin.UR, 0, 0.1, "Unemployment rate (1)"),
+        (fin.CBC, 0, 0.1, "Corporate borrowing cost (1/y)"),
+        (fin.CBSR, 0, 0.1, "Central bank signal rate (1/y)"),
+        (fin.GBC, 0, 0.1, "Government borrowing cost (1/y)"),
+        (fin.WBC, 0, 0.1, "Worker borrowing cost (1/y)"),
+        (fin.IR, -0.05, 0.05, "Inflation rate (1/y)"),
     ]
 
 

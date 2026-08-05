@@ -19,9 +19,9 @@ def pop_run_solution():
 def _variables_pop():
     pop = population()
     return [
-        (pop.BIRTHS, 0, 140, "Births Mp/y"),
-        (pop.LE60, 0, 40, "LE at 60 y"),
-        (pop.POP, 3000, 11000, "Population Mp"),
+        (pop.BIRTHS, 0, 140, "Births (Mp/y)"),
+        (pop.LE60, 0, 40, "Life expectancy at 60 (y)"),
+        (pop.POP, 3000, 11000, "Population (Mp)"),
     ]
 
 

@@ -19,12 +19,12 @@ def dem_run_solution():
 def _variables_dem():
     dem = demand()
     return [
-        (dem.CSGDP, 0, 1, "Consumption share of GDP"),
-        (dem.SSGDP, 0, 1, "Savings share of GDP"),
-        (dem.GSGDP, 0, 1, "Government share of GDP"),
-        (dem.NI, 0, 400000, "National income"),
-        (dem.GDB, 0, 2, "Governament debt burden"),
-        (dem.WDB, 0, 2, "Worker debt burden"),
+        (dem.CSGDP, 0, 1, "Consumption share of GDP (1)"),
+        (dem.SSGDP, 0, 1, "Savings share of GDP (1)"),
+        (dem.GSGDP, 0, 1, "Government share of GDP (1)"),
+        (dem.NI, 0, 400000, "National income (G$/y)"),
+        (dem.GDB, 0, 2, "Government debt burden (y)"),
+        (dem.WDB, 0, 2, "Worker debt burden (y)"),
     ]
 
 

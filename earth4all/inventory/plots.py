@@ -19,10 +19,10 @@ def inv_run_solution():
 def _variables_inv():
     inv = inventory()
     return [
-        (inv.PNIS, 0, 2, "PNIS"),
-        (inv.PRI, 0, 1.5, "PRI"),
-        (inv.DELDI, 0.9, 1.1, "DELDI"),
-        (inv.IR, -0.1, 0.1, "IR"),
+        (inv.PNIS, 0, 2, "Pink noise in sales (1)"),
+        (inv.PRI, 0, 1.5, "Perceived relative inventory (1)"),
+        (inv.DELDI, 0.9, 1.1, "Delivery delay index (1)"),
+        (inv.IR, -0.1, 0.1, "Inflation rate (1/y)"),
         # The Julia list ends on `inv.PI`, which the Inventory sector does not
         # declare. `PI` belongs to Finance, which a run of this sector alone
         # does not include, so the figure is left with the four above.

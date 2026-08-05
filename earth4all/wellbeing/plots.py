@@ -19,7 +19,7 @@ def wel_run_solution():
 def _variables_wb():
     wel = wellbeing()
     return [
-        (wel.AWBI, 0, 4, "Average WellBeing Index"),
+        (wel.AWBI, 0, 4, "Average wellbeing index (1)"),
     ]
 
 

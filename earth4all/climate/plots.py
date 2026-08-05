@@ -19,12 +19,12 @@ def cli_run_solution():
 def _variables_cli():
     cli = climate()
     return [
-        (cli.OW, 0, 4, "Observed warming deg C"),
-        (cli.CO2E, 0, 44, "CO2 emissions GtCO2/y"),
-        (cli.CO2CA, 0, 600, "CO2 concentration in atm ppm"),
-        (cli.MMF, 0, 8, "Man-made forcing W/m2"),
-        (cli.ISCEGA, 0, 20, "Ice and snow cover excl G&A Mkm"),
-        (cli.WVF, 0, 8, "Water vapour feedback W/m2"),
+        (cli.OW, 0, 4, "Observed warming (°C)"),
+        (cli.CO2E, 0, 44, "CO2 emissions (GtCO2/y)"),
+        (cli.CO2CA, 0, 600, "CO2 concentration in atmosphere (ppm)"),
+        (cli.MMF, 0, 8, "Man-made forcing (W/m²)"),
+        (cli.ISCEGA, 0, 20, "Ice and snow cover excl. G&A (Mkm²)"),
+        (cli.WVF, 0, 8, "Water vapour feedback (W/m²)"),
     ]
 
 

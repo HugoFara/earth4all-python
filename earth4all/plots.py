@@ -17,13 +17,13 @@ def _variables():
     cli = climate.climate(name="cli")
     dem = demand.demand(name="dem")
     return [
-        (pop.POP, 0, 10000, "Population"),
+        (pop.POP, 0, 10000, "Population (Mp)"),
         # The Julia code stops this axis at 2.4, which the Giant Leap runs past.
-        (wel.AWBI, 0, 3.5, "Average wellbeing"),
-        (pop.GDPP, 0, 60, "GDP per person"),
-        (wel.STE, 0, 2, "Social tension"),
-        (dem.INEQ, 0, 1.6, "Inequality"),
-        (cli.OW, 0, 4, "Global warming"),
+        (wel.AWBI, 0, 3.5, "Average wellbeing (1)"),
+        (pop.GDPP, 0, 60, "GDP per person (k$/p/y)"),
+        (wel.STE, 0, 2, "Social tension (1)"),
+        (dem.INEQ, 0, 1.6, "Inequality (1)"),
+        (cli.OW, 0, 4, "Global warming (°C)"),
     ]
 
 

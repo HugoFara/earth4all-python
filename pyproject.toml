@@ -23,7 +23,8 @@ plots = ["matplotlib>=3.5"]
 tables = ["pandas>=1.3"]
 solvers = ["scipy>=1.7"]
 dev = ["pytest>=7", "matplotlib>=3.5", "scipy>=1.7", "pandas>=1.3"]
-notebook = ["jupyterlab>=3", "matplotlib>=3.5", "pandas>=1.3"]
+notebook = ["jupyterlab>=3", "nbclient>=0.7", "nbformat>=5.1", "matplotlib>=3.5",
+            "pandas>=1.3"]
 
 [project.scripts]
 earth4all = "earth4all.__main__:main"

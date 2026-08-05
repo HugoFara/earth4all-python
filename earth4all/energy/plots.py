@@ -19,7 +19,7 @@ def ene_run_solution():
 def _variables_en():
     ene = energy()
     return [
-        (ene.CE, 0, 7000, ""),
+        (ene.CE, 0, 7000, "Cost of energy (G$/y)"),
     ]
 
 

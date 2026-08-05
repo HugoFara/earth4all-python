@@ -19,12 +19,12 @@ def foo_run_solution():
 def _variables_foo():
     foo = foodland()
     return [
-        (foo.CRLA, 0, 2000, "CRLA"),
-        (foo.CRUS, 0, 8000, "CRUS"),
-        (foo.CRUSP, 0, 1.2, "CRUSP"),
-        (foo.FEUS, 0, 200, "FEUS"),
-        (foo.FRA, 0, 1, "FRA"),
-        (foo.TFA, 0, 4000, "TFA"),
+        (foo.CRLA, 0, 2000, "Cropland (Mha)"),
+        (foo.CRUS, 0, 8000, "Crop use (Mt/y)"),
+        (foo.CRUSP, 0, 1.2, "Crop use per person (t-crop/p/y)"),
+        (foo.FEUS, 0, 200, "Fertilizer use (Mt/y)"),
+        (foo.FRA, 0, 1, "Fraction regenerative agriculture (1)"),
+        (foo.TFA, 0, 4000, "Total forest area (Mha)"),
     ]
 
 

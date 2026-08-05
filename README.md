@@ -41,9 +41,14 @@ Each of the twelve sectors has a figure of its own as well: **[the gallery](figu
 shows all of them, next to what each one is about.
 
 `python scripts/render_figures.py` draws every figure again, after a change to
-the model or to the plots, and rewrites the gallery page. Two notebooks go
-through the same ground interactively: `examples/two-scenarios.ipynb` for the
-scenarios, `examples/sector-gallery.ipynb` for the sectors.
+the model or to the plots, and rewrites the gallery page. The two notebooks in
+`examples/` go through the same ground and are stored with their figures in
+place: `two-scenarios.ipynb` for the scenarios, `sector-gallery.ipynb` for the
+sectors.
+
+Units are the ones the model carries: `Mp` is millions of people, `G$` a billion
+dollars, `Mha` a million hectares, and `(1)` a quantity that has no unit at all —
+a share, a ratio, or an index.
 
 ## Running the model
 
@@ -78,12 +83,15 @@ Or from a shell:
 python -m earth4all gl --plot giant-leap.png --csv giant-leap.csv
 ```
 
-`examples/two-scenarios.ipynb` walks through both scenarios, builds a third one,
-and compares the run with Vensim:
+Two notebooks in `examples/` walk through the model: `two-scenarios.ipynb` runs
+both scenarios, builds a third one and compares the run with Vensim, and
+`sector-gallery.ipynb` draws each of the twelve sectors and changes one. Both are
+stored with their figures in place, so they read without being run:
 
 ```sh
 pip install -e ".[notebook]"
 jupyter lab examples/two-scenarios.ipynb
+python scripts/run_notebooks.py   # run them again and save what they draw
 ```
 
 ### Changing the model

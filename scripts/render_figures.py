@@ -62,6 +62,10 @@ GALLERY_HEADER = """# Figures
 
 Drawn by `python scripts/render_figures.py`, from the model in this repository.
 
+Units are the ones the model carries: `Mp` is millions of people, `G$` a billion
+dollars, `Mha` a million hectares, `Gcu` a billion capacity units, and `(1)` a
+quantity that has no unit at all — a share, a ratio, or an index.
+
 ## The two scenarios
 
 | Too Little Too Late | Giant Leap |

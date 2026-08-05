@@ -19,11 +19,11 @@ def out_run_solution():
 def _variables_out():
     out = output()
     return [
-        (out.CUCPIS, 0, 100000, "CUCPIS"),
-        (out.CUCPUS, 0, 30000, "CUCPUS"),
-        (out.OGR, -0.1, 0.1, "OGR"),
-        (out.OLY, 0, 350000, "OLY"),
-        (out.ORO, 0, 350000, "ORO"),
+        (out.CUCPIS, 0, 100000, "Capacity under construction PIS (Gcu)"),
+        (out.CUCPUS, 0, 30000, "Capacity under construction PUS (Gcu)"),
+        (out.OGR, -0.1, 0.1, "Output growth rate (1/y)"),
+        (out.OLY, 0, 350000, "Output last year (G$/y)"),
+        (out.ORO, 0, 350000, "Optimal real output (Gu/y)"),
     ]
 
 

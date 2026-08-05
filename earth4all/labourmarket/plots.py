@@ -19,11 +19,11 @@ def lab_run_solution():
 def _variables_lab():
     lab = labour_market()
     return [
-        (lab.WF, 0, 6000, "Workforce"),
-        (lab.WSO, 0, 1, "Worker share of output"),
+        (lab.WF, 0, 6000, "Workforce (Mp)"),
+        (lab.WSO, 0, 1, "Worker share of output (1)"),
         # The Julia list names `UNRA` here; the unemployment rate of the sector
         # is `UR`.
-        (lab.UR, 0, 0.1, "Unemployment rate"),
+        (lab.UR, 0, 0.1, "Unemployment rate (1)"),
     ]
 
 

@@ -19,11 +19,11 @@ def pub_run_solution():
 def _variables_pub():
     pub = public()
     return [
-        (pub.DRTA, 0, 0.1, "DRTA"),
-        (pub.GSSGDP, 0, 1, "GSSGDP"),
-        (pub.PSP, 0, 10, "PSP"),
-        (pub.TFPEE5TA, 0, 5, "TFPEE5TA"),
-        (pub.XECTAGDP, -1, 1, "XECTAGDP"),
+        (pub.DRTA, 0, 0.1, "Domestic rate of technological advance (1/y)"),
+        (pub.GSSGDP, 0, 1, "Government spending as share of GDP (1)"),
+        (pub.PSP, 0, 10, "Public spending per person (k$/p/y)"),
+        (pub.TFPEE5TA, 0, 5, "TFP excluding the effect of the 5 turnarounds (1)"),
+        (pub.XECTAGDP, -1, 1, "Extra cost of the turnarounds as share of GDP (1)"),
     ]
 
 
