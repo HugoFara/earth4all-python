@@ -1,0 +1,43 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.11", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install the package and its test dependencies
+        run: pip install -e ".[dev]"
+
+      - name: Fetch the Vensim reference runs
+        # The trajectories Vensim exports are a hundred megabytes, so they are
+        # fetched for one version only; the tests that compare with them skip
+        # themselves when the Julia repository is not next to this one.
+        if: matrix.python-version == '3.13'
+        continue-on-error: true
+        run: |
+          git clone --depth 1 --filter=blob:none --sparse \
+            https://github.com/worlddynamics/Earth4All.jl.git ../Earth4All.jl
+          git -C ../Earth4All.jl sparse-checkout set VensimOutput
+
+      - name: Run the tests
+        run: python -m pytest -v
+
+      - name: Solve both scenarios from the command line
+        run: python -m earth4all both
