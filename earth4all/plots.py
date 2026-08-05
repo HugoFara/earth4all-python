@@ -18,7 +18,8 @@ def _variables():
     dem = demand.demand(name="dem")
     return [
         (pop.POP, 0, 10000, "Population"),
-        (wel.AWBI, 0, 2.4, "Average wellbeing"),
+        # The Julia code stops this axis at 2.4, which the Giant Leap runs past.
+        (wel.AWBI, 0, 3.5, "Average wellbeing"),
         (pop.GDPP, 0, 60, "GDP per person"),
         (wel.STE, 0, 2, "Social tension"),
         (dem.INEQ, 0, 1.6, "Inequality"),

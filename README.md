@@ -14,6 +14,33 @@ reference runs. The only dependency of the model itself is NumPy; matplotlib is
 needed to draw, pandas to export a table, SciPy only for solvers other than
 Euler.
 
+## The two scenarios
+
+In *Too Little Too Late* the world keeps doing what it has been doing. In the
+*Giant Leap* it carries out five turnarounds — on poverty, inequality,
+empowerment, food and energy — which in the model is the same run with a few
+parameters changed. Both figures show the six variables the book puts first,
+each against its own axis.
+
+| Too Little Too Late | Giant Leap |
+| --- | --- |
+| ![Too Little Too Late base run](figures/baserun-tltl.png) | ![Giant Leap base run](figures/baserun-gl.png) |
+
+The same variables with the scenarios drawn on top of each other. Nothing
+separates them before 2022, when the turnarounds start:
+
+![The two scenarios compared](figures/scenario-comparison.png)
+
+Population peaks at 8790 million in 2054 and falls to 7283 by 2100 under *Too
+Little Too Late*; under the *Giant Leap* it peaks earlier and lower, at 8518
+million in 2045, and ends at 5984. Wellbeing is where the two part company
+hardest: it drifts sideways in one and more than quadruples in the other, while
+warming ends at 2.35 °C against 2.01 °C.
+
+`python scripts/render_figures.py` draws these three again, after a change to the
+model or to the plots. `examples/two-scenarios.ipynb` goes through them
+interactively.
+
 ## Running the model
 
 ```sh
