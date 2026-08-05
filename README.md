@@ -1,5 +1,7 @@
 # earth4all
 
+[![tests](https://github.com/HugoFara/earth4all-python/actions/workflows/tests.yml/badge.svg)](https://github.com/HugoFara/earth4all-python/actions/workflows/tests.yml)
+
 A Python implementation of the [Earth4All model](https://earth4all.life/the-science-rp/),
 ported from [Earth4All.jl](https://github.com/worlddynamics/Earth4All.jl), which
 implements the [April 2023 Vensim version](https://web.archive.org/web/20220830093115/https://earth4all.life/the-science/)
