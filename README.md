@@ -182,6 +182,28 @@ differences of two nearly equal large numbers, so the six digits Vensim exports
 are not enough to compare them. Their absolute differences stay small next to the
 range each series covers.
 
+## Agreement with Earth4All.jl
+
+The Julia package does not run on a fresh install: its `Project.toml` carries no
+version bounds, so the environment resolves to a ModelingToolkit the model no
+longer works with ([Earth4All.jl#25](https://github.com/worlddynamics/Earth4All.jl/issues/25)).
+Resolving the whole stack against a snapshot of the General registry from April
+2024 — Julia 1.10, ModelingToolkit 9.12.1, WorldDynamics 1.0.0 — does run it,
+and the two implementations then agree (Earth4All.jl at `5d18467`):
+
+| Too Little Too Late | Earth4All.jl | This port |
+| --- | --- | --- |
+| Population in 2100 (Mp) | 7282.516980299024 | 7282.516980299024 |
+| Population at its peak (Mp) | 8790.019708430236 | 8790.019708430234 |
+| in the year | 2053.9375 | 2053.9375 |
+| Observed warming in 2100 (°C) | 2.348452593633511 | 2.3484525936335094 |
+| Average wellbeing in 2100 (1) | 0.7215392562533492 | 0.7215392562533787 |
+
+The same 105 stocks over the same 7681 steps. Population comes out identical to
+every digit printed; the others differ in the last one or two, a relative 1e-15
+to 1e-14, which is the order the sums are taken in rather than anything in the
+model.
+
 ## Differences from the Julia package
 
 - The equations, parameters, initial values and scenarios are the same; the
